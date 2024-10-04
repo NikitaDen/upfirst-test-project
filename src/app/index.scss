@@ -1,5 +1,8 @@
-:root {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800');
 
+:root {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
 }
 
 *, *::after, *::before {
@@ -16,4 +19,5 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  overflow: hidden;
 }
