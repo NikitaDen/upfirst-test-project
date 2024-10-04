@@ -1,8 +1,7 @@
 import React, { memo } from 'react'
 import classNames from 'classnames'
+import { Status } from '@/shared/model'
 import s from './chip.module.scss'
-
-type Status = 'success' | 'error' | 'warning' | 'info'
 
 type ChipProps = {
   status: Status
