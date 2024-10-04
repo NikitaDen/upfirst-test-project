@@ -1,0 +1,25 @@
+.chip {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  display: inline-block;
+  color: #fff;
+  font-weight: bold;
+}
+
+.success {
+  background-color: #28a745;
+}
+
+.error {
+  background-color: #dc3545;
+}
+
+.warning {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.info {
+  background-color: #17a2b8;
+}
