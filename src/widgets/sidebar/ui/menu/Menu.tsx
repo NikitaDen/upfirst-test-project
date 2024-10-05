@@ -8,9 +8,9 @@ type MenuProps = {
   onClose?: () => unknown
 }
 
-export const Menu = memo(({ className = '', onClose }: MenuProps) => {
+export const Menu = memo(({ className, onClose }: MenuProps) => {
   return (
-    <nav className={classNames(s.menu, { [className]: true })}>
+    <nav className={classNames(s.menu, { [className]: Boolean(className) })}>
       <header>
         <span>Menu</span>
 

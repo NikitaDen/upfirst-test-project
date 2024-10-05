@@ -10,7 +10,7 @@ type SpinnerProps = {
 export const Spinner = memo(({ size = 32, className }: SpinnerProps) => {
   return (
     <div
-      className={classNames(s.spinner, { [className]: true })}
+      className={classNames(s.spinner, { [className]: Boolean(className) })}
       style={{ width: size, height: size }}
     >
       <div className={s.doubleBounce1} />
