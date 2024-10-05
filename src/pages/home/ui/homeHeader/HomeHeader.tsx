@@ -8,7 +8,7 @@ type HomeHeaderProps = {
   children?: ReactNode
 }
 
-export const HomeHeader = memo(({ className, children }: HomeHeaderProps) => {
+export const HomeHeader = memo(({ className = '', children }: HomeHeaderProps) => {
   return (
     <Header className={classNames(s.homeHeader, { [className]: Boolean(className) })}>
       {children}

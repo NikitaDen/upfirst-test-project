@@ -7,7 +7,7 @@ type SpinnerProps = {
   className?: string
 }
 
-export const Spinner = memo(({ size = 32, className }: SpinnerProps) => {
+export const Spinner = memo(({ size = 32, className = '' }: SpinnerProps) => {
   return (
     <div
       className={classNames(s.spinner, { [className]: Boolean(className) })}

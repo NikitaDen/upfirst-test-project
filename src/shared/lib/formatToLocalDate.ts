@@ -1,6 +1,6 @@
 export function formatToLocalDate(
   isoDateString: string,
-  locales: string | string[] = undefined,
+  locales: string | string[] = [],
   options?: Intl.DateTimeFormatOptions
 ): string {
   try {

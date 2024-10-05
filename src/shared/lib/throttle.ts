@@ -3,17 +3,15 @@ export function throttle<T extends (...args: any[]) => void>(func: T, limit: num
   let lastRan: number | undefined
 
   return function (...args): void {
-    const context = this
-
     if (lastRan === undefined) {
-      func.apply(context, args)
+      func(...args)
       lastRan = Date.now()
     } else {
       clearTimeout(lastFunc)
       lastFunc = setTimeout(
         () => {
           if (Date.now() - (lastRan as number) >= limit) {
-            func.apply(context, args)
+            func(...args)
             lastRan = Date.now()
           }
         },

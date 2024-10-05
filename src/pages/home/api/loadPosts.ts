@@ -1,8 +1,11 @@
 import { API } from '@/shared/api'
 import { Post } from '@/entities/card/model'
 
-const isValidPostsLists = (posts): posts is Post[] => {
-  return Array.isArray(posts) && (!posts.length || 'id' in posts[0])
+const isValidPostsLists = (posts: unknown[]): posts is Post[] => {
+  return (
+    Array.isArray(posts) &&
+    (!posts.length || (typeof posts === 'object' && 'id' in (posts as Array<Post>)[0]))
+  )
 }
 
 export async function loadPosts(
@@ -28,7 +31,7 @@ export async function loadPosts(
 
   let totalCount = 0
 
-  if ('get' in headers) {
+  if (headers && 'get' in headers && typeof headers.get === 'function') {
     totalCount = Number(headers.get('x-total-count'))
   }
 

@@ -8,7 +8,7 @@ type SideBarProps = {
   onClose?: () => unknown
 }
 
-export const SideBar = ({ className, onClose }: SideBarProps) => {
+export const SideBar = ({ className = '', onClose }: SideBarProps) => {
   return (
     <aside className={classNames(s.sidebar, { [className]: Boolean(className) })}>
       <Menu onClose={onClose} />

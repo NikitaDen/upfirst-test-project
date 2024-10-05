@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react'
+import { memo, useState } from 'react'
 import { Post } from '@/entities/card/model'
 import { Button, Chip } from '@/shared/ui'
 import { formatToLocalDate } from '@/shared/lib'
