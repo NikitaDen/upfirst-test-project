@@ -1,50 +1,50 @@
-# React + TypeScript + Vite
+# Project README
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Challenge Overview
 
-Currently, two official plugins are available:
+This project is a React and TypeScript implementation of a page that features a left-side menu, footer, and a main list of cards. The layout is designed to be user-friendly, visually appealing, and responsive.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## DONE
 
-## Expanding the ESLint configuration
+1. **Used FSD Architecture**  
+   Implemented Feature-Sliced Design (FSD) for improved scalability and maintainability.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. **Used CSS Variables for Theming**  
+   Employed CSS variables for flexible and easily adjustable theming.
 
-- Configure the top-level `parserOptions` property like this:
+3. **Integrated Public API**  
+   Utilized the JSONPlaceholder API to fetch and display at least 10 entries, showing "name" and "subject" fields.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+4. **Expandable Cards**  
+   Cards can be expanded or collapsed by clicking on them or on any text-free space.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+5. **Pagination Functionality**  
+   Implemented pagination controls to navigate between pages of posts.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+6. **Kept Page Index State in URL**  
+   Maintained current page index in the URL for persistence during page reloads.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+7. **Removed Cards**  
+   Added the ability to remove cards by clicking a button.
+
+## TODO
+1. **Confirmation for Deleting Posts**  
+   Implemented a confirmation dialog to prevent accidental deletions of cards.
+
+2. **Update Post List After Deletion**  
+   Ensured the list of entries is updated based on the current page index after a post is deleted.
+
+3. **Display Error State on the Page**  
+    Incorporated error handling to show messages for failed operations.
+
+4. **Improve Accessibility**  
+    Enhanced accessibility features to ensure the application is usable for all users.
+
+## NOTES
+
+1. **Handling Clicks in Text-Free Spaces**  
+   Uncertainty exists on whether any text-free space can collapse cards. The `handleTextFreeClick` function checks for text nodes at the click point.
+
+## Demo
+
+The project is deployed and demo-ready. You can access it [here](insert-demo-link).
