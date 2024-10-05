@@ -40,6 +40,9 @@ This project is a React and TypeScript implementation of a page that features a 
 4. **Improve Accessibility**  
     Enhanced accessibility features to ensure the application is usable for all users.
 
+5. **Empty Content**
+   Add some filling content in case there are no posts found.
+
 ## NOTES
 
 1. **Handling Clicks in Text-Free Spaces**  
