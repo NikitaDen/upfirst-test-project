@@ -1,4 +1,5 @@
 export { Button } from './button'
 export { Header } from './header'
+export { Footer } from './footer'
 export { Chip } from './chip'
 export { Spinner } from './spinner'
