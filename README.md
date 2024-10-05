@@ -27,7 +27,7 @@ This project is a React and TypeScript implementation of a page that features a 
 7. **Removed Cards**  
    Added the ability to remove cards by clicking a button.
 
-## TODO
+## TODOs (possible improvements)
 1. **Confirmation for Deleting Posts**  
    Implemented a confirmation dialog to prevent accidental deletions of cards.
 
@@ -43,6 +43,9 @@ This project is a React and TypeScript implementation of a page that features a 
 5. **Empty Content**
    Add some filling content in case there are no posts found.
 
+6. **Fetching**
+   Create custom hook for fetching or better option when scaling: TanStack Query or RTK Query
+
 ## NOTES
 
 1. **Handling Clicks in Text-Free Spaces**  
@@ -50,4 +53,4 @@ This project is a React and TypeScript implementation of a page that features a 
 
 ## Demo
 
-The project is deployed and demo-ready. You can access it [here](insert-demo-link).
+The project is deployed and demo-ready. You can access it [here](https://nikitaden.github.io/upfirst-test-project/).
