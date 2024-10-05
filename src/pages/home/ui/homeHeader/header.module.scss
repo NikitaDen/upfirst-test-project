@@ -1,3 +1,11 @@
 .headerButton {
   margin-left: auto;
 }
+
+.homeHeader {
+  @media screen and (max-width: 420px) {
+    span {
+      display: none
+    }
+  }
+}

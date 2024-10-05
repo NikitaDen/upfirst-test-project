@@ -1,6 +1,21 @@
-import s from './menu.module.scss'
 import { memo } from 'react'
+import classNames from 'classnames'
+import { Button } from '@/shared/ui'
+import s from './menu.module.scss'
 
-export const Menu = memo(() => {
-  return <nav className={s.menu}>Menu</nav>
+type MenuProps = {
+  className?: string
+  onClose?: () => unknown
+}
+
+export const Menu = memo(({ className = '', onClose }: MenuProps) => {
+  return (
+    <nav className={classNames(s.menu, { [className]: true })}>
+      <header>
+        <span>Menu</span>
+
+        {onClose && <Button onClick={onClose}>Close</Button>}
+      </header>
+    </nav>
+  )
 })

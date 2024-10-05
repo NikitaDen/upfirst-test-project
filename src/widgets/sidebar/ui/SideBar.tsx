@@ -1,11 +1,17 @@
 import { Menu } from './menu'
 import { Button } from '@/shared/ui'
-import s from './SideBar.module.scss'
+import classNames from 'classnames'
+import s from './sideBar.module.scss'
 
-export const SideBar = () => {
+type SideBarProps = {
+  className?: string
+  onClose?: () => unknown
+}
+
+export const SideBar = ({ className, onClose }: SideBarProps) => {
   return (
-    <aside className={s.sidebar}>
-      <Menu />
+    <aside className={classNames(s.sidebar, { [className]: Boolean(className) })}>
+      <Menu onClose={onClose} />
 
       <Button className={s.logoutButton}>Logout</Button>
     </aside>

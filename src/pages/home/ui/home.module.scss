@@ -7,6 +7,44 @@
   overflow: hidden;
 }
 
+.menuButton {
+  display: none;
+  margin-right: var(--spacing-md);
+}
+
+.homeSideBar {
+  // close button
+  header button {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .homeHeader {
+    .menuButton {
+      display: flex;
+    }
+  }
+
+  .homeSideBar {
+    display: none;
+  }
+
+  .homeSideBarOpenFullScreen {
+    backdrop-filter: blur(100px);
+    background-color: transparent;
+    display: flex;
+    position: fixed;
+    z-index: 2;
+    inset: 0;
+
+    header button {
+      display: flex;
+    }
+  }
+}
+
+
 .homeContent {
   flex: 1;
   height: 100%;
