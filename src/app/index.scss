@@ -3,12 +3,90 @@
 :root {
   font-family: "Poppins", sans-serif;
   font-style: normal;
+
+  /* Primary and Secondary Colors (HSL) */
+  --primary-hue: 220; /* Primary color: dark blue */
+  --primary-saturation: 90%;
+  --primary-lightness: 50%;
+
+  --secondary-hue: 30; /* Complementary color: orange */
+  --secondary-saturation: 90%;
+  --secondary-lightness: 50%;
+
+  /* Neutral Colors for Backgrounds and Text */
+  --neutral-hue: 0; /* Neutral color (grayscale) */
+  --neutral-saturation: 0%;
+  --neutral-lightness-dark: 20%;
+  --neutral-lightness-light: 80%;
+
+  /* Lightness for dark mode */
+  --background-lightness: 6.5%;
+  --foreground-lightness: 90%;
+  --border-lightness: 40%; /* Borders and dividers */
+
+  /* Text Colors */
+  --text-color: hsl(var(--neutral-hue), var(--neutral-saturation), var(--foreground-lightness));
+  --text-muted: hsl(var(--neutral-hue), var(--neutral-saturation), 60%);
+
+  /* Background Colors */
+  --background-color: hsl(var(--neutral-hue), var(--neutral-saturation), var(--background-lightness));
+  --background-alt-color: hsl(var(--neutral-hue), var(--neutral-saturation), 10%);
+
+  /* Border Colors */
+  --border-color: hsl(var(--neutral-hue), var(--neutral-saturation), 15%);
+
+  /* Primary and Secondary Buttons and Elements */
+  --primary-color: hsl(var(--primary-hue), var(--primary-saturation), var(--primary-lightness));
+  --primary-color-hover: hsl(var(--primary-hue), var(--primary-saturation), calc(var(--primary-lightness) + 10%));
+
+  --secondary-color: hsl(var(--secondary-hue), var(--secondary-saturation), var(--secondary-lightness));
+  --secondary-color-hover: hsl(var(--secondary-hue), var(--secondary-saturation), calc(var(--secondary-lightness) + 10%));
+
+  /* System Colors (Errors, Warnings, Successes) */
+  --error-color: hsl(0, 70%, 60%);
+  --error-color-hover: hsl(0, 70%, 70%);
+  --warning-color: hsl(40deg, 90%, 32%);
+  --warning-color-hover: hsl(40deg, 90%, 38%);
+  --success-color: hsl(120deg, 50%, 33%);
+  --success-color-hover: hsl(120deg, 50%, 37%);
+
+  /* Spacing Variables (rem units for scaling) */
+  --spacing-xxs: 0.25rem;  /* Extra extra small (4px) */
+  --spacing-xs: 0.5rem;    /* Extra small (8px) */
+  --spacing-sm: 1rem;      /* Small (16px) */
+  --spacing-md: 1.5rem;    /* Medium (24px) */
+  --spacing-lg: 2rem;      /* Large (32px) */
+  --spacing-xl: 3rem;      /* Extra large (48px) */
+  --spacing-xxl: 4rem;     /* Extra extra large (64px) */
+
+  /* Typography Variables */
+  --font-size-base: 16px;  /* Base font size */
+  --line-height-base: 1.6; /* Default line height */
+
+  /* Font size scaling */
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.25rem;
 }
 
 *, *::after, *::before {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px; /* Slim height for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(0, 0%, 20%);
+  border-radius: 10px;
 }
 
 #root, html, body {
@@ -20,4 +98,11 @@
   justify-content: center;
   flex-direction: column;
   overflow: hidden;
+}
+
+body {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
