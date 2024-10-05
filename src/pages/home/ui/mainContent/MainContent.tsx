@@ -5,6 +5,7 @@ import { loadPosts } from '@/pages/home/api'
 import { Pagination } from '@/features/pagination/ui'
 import { Spinner } from '@/shared/ui'
 import classNames from 'classnames'
+import { deletePost } from '@/entities/card/api'
 import s from './mainContent.module.scss'
 
 const POSTS_PER_PAGE = 7
@@ -68,6 +69,20 @@ export const MainContent = memo(() => {
     }
   }
 
+  const handleDeletePost = async (id: Post['id']) => {
+    try {
+      setRequestState('pending')
+
+      await deletePost(id)
+
+      setPosts(posts.filter((post) => post.id !== id))
+      setRequestState('idle')
+    } catch (e) {
+      setRequestState('error')
+      console.log('Could not remove post:', e)
+    }
+  }
+
   return (
     <main className={s.mainContent}>
       <ul className={classNames(s.postsList, { [s.disabled]: isPending && posts.length })}>
@@ -81,6 +96,7 @@ export const MainContent = memo(() => {
             >
               <Card
                 key={post.id}
+                onDelete={() => handleDeletePost(post.id)}
                 {...post}
               />
             </li>
