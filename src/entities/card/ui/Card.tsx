@@ -35,10 +35,7 @@ export const Card = memo(
             <p className={s.subject}>{body}</p>
           </div>
 
-          <Chip
-            status={'info'}
-            label={formatToLocalDate(createdAt)}
-          />
+          <small className={s.date}>{formatToLocalDate(createdAt)}</small>
         </header>
 
         <div className={s.cardContent}>
