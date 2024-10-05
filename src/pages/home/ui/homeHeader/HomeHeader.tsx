@@ -5,6 +5,8 @@ import s from './header.module.scss'
 export const HomeHeader = memo(() => {
   return (
     <Header>
+      <span>Header</span>
+
       <Button
         variant={'secondary'}
         className={s.headerButton}

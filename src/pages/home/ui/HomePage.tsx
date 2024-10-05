@@ -1,6 +1,7 @@
 import { SideBar } from '@/widgets/sidebar'
 import { MainContent } from '@/pages/home/ui/mainContent'
 import { HomeHeader } from '@/pages/home/ui/homeHeader'
+import { HomeFooter } from '@/pages/home/ui/homeFooter'
 import s from './home.module.scss'
 
 export const HomePage = () => {
@@ -11,6 +12,7 @@ export const HomePage = () => {
       <div className={s.homeContent}>
         <HomeHeader />
         <MainContent />
+        <HomeFooter />
       </div>
     </div>
   )
