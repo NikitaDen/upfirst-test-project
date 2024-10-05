@@ -5,7 +5,12 @@ import s from './header.module.scss'
 export const HomeHeader = memo(() => {
   return (
     <Header>
-      <Button className={s.headerButton}>Header Button</Button>
+      <Button
+        variant={'secondary'}
+        className={s.headerButton}
+      >
+        Header Button
+      </Button>
     </Header>
   )
 })

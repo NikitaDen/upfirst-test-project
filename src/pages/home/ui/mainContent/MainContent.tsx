@@ -75,7 +75,10 @@ export const MainContent = memo(() => {
           <Spinner className={s.homeSpinner} />
         ) : (
           posts.map((post) => (
-            <li key={post.id}>
+            <li
+              className={s.listLi}
+              key={post.id}
+            >
               <Card
                 key={post.id}
                 {...post}
