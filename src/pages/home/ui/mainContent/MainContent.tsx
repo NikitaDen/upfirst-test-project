@@ -6,18 +6,40 @@ import { Pagination } from '@/features/pagination/ui'
 import { Spinner } from '@/shared/ui'
 import classNames from 'classnames'
 import { deletePost } from '@/entities/card/api'
+import { throttle, useUrlState } from '@/shared/lib'
 import s from './mainContent.module.scss'
 
 const POSTS_PER_PAGE = 7
+const DEFAULT_PAGINATION_SHOWED_PAGES_COUNT = 5
 
-// TODO page index state in URL
 export const MainContent = memo(() => {
   const [posts, setPosts] = useState<Post[]>([])
-  const [currentPageIndex, setCurrentPageIndex] = useState(0)
+  const [currentPageIndex, setCurrentPageIndex] = useUrlState('pageIndex', 0)
   const [requestState, setRequestState] = useState<'pending' | 'error' | 'idle'>('idle')
   const [totalPostsCount, setTotalPostsCount] = useState(0)
+  const [showedPagesCount, setShowedPagesCount] = useState(DEFAULT_PAGINATION_SHOWED_PAGES_COUNT)
 
   const isPending = requestState === 'pending'
+
+  useEffect(() => {
+    const debouncedResizeCallback = throttle((size: number) => {
+      if (size < 460) {
+        setShowedPagesCount(3)
+      } else {
+        setShowedPagesCount(DEFAULT_PAGINATION_SHOWED_PAGES_COUNT)
+      }
+    }, 500)
+
+    const resizeHandler = () => {
+      debouncedResizeCallback(window.innerWidth)
+    }
+
+    window.addEventListener('resize', resizeHandler)
+
+    return () => {
+      window.removeEventListener('resize', resizeHandler)
+    }
+  }, [])
 
   useEffect(() => {
     // Flag that allows to ignore request's returned result in case same request is triggered again
@@ -27,7 +49,7 @@ export const MainContent = memo(() => {
       try {
         setRequestState('pending')
 
-        const { posts, totalCount } = await loadPosts(0, POSTS_PER_PAGE)
+        const { posts, totalCount } = await loadPosts(currentPageIndex, POSTS_PER_PAGE)
 
         if (!ignore) {
           setPosts(posts)
@@ -108,6 +130,7 @@ export const MainContent = memo(() => {
         <Pagination
           disabled={isPending}
           currentPageIndex={currentPageIndex}
+          showedPagesCount={showedPagesCount}
           totalPages={Math.ceil(totalPostsCount / POSTS_PER_PAGE)}
           onPageIndexChange={handlePageChange}
         />
