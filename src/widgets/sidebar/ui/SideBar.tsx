@@ -1,6 +1,6 @@
-import s from './SideBar.module.scss'
 import { Menu } from './menu'
-import { Button } from '../../../shared/ui/button'
+import { Button } from '@/shared/ui'
+import s from './SideBar.module.scss'
 
 export const SideBar = () => {
   return (

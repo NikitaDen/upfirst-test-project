@@ -1,6 +1,7 @@
 import { memo } from 'react'
-import s from './pagination.module.scss'
 import classNames from 'classnames'
+import { Button } from '@/shared/ui'
+import s from './pagination.module.scss'
 
 type PaginationProps = {
   currentPageIndex: number
@@ -18,7 +19,6 @@ export const Pagination = memo(
     disabled,
     showedPagesCount = 5,
   }: PaginationProps) => {
-    console.log(disabled)
     const handlePageChange = (pageIndex: number) => {
       if (pageIndex >= 0 && pageIndex < totalPages) {
         onPageIndexChange(pageIndex)
@@ -64,31 +64,31 @@ export const Pagination = memo(
 
     return (
       <nav className={classNames(s.pagination, { [s.disabled]: disabled })}>
-        <button
+        <Button
           onClick={() => handlePageChange(currentPageIndex - 1)}
           disabled={currentPageIndex === 0}
           className={s.pageButton}
         >
-          Previous
-        </button>
+          <span style={{ display: 'inline-block', marginBottom: 4 }}>←</span>
+        </Button>
 
         {pageNumbers.map((number) => (
-          <button
+          <Button
             key={number}
             onClick={() => handlePageChange(number - 1)}
             className={classNames(s.pageButton, { [s.active]: currentPageIndex + 1 === number })}
           >
             {number}
-          </button>
+          </Button>
         ))}
 
-        <button
+        <Button
           onClick={() => handlePageChange(currentPageIndex + 1)}
           disabled={currentPageIndex === totalPages - 1}
           className={s.pageButton}
         >
-          Next
-        </button>
+          <span style={{ display: 'inline-block', marginBottom: 4 }}>→</span>
+        </Button>
       </nav>
     )
   }
