@@ -24,30 +24,31 @@
 }
 
 .cardMainInfo {
-  display: flex;
-  flex-wrap: wrap;
   flex: 1;
   margin: 0 var(--spacing-md);
 }
 
-.subject, .name {
+.date {
+  opacity: .5;
+  float: right;
+  padding-left: var(--spacing-md);
+}
+
+.subject {
+  display: inline-block;
+  padding: var(--spacing-sm) 0 0 0;
+
   &::first-letter {
     text-transform: uppercase;
   }
 }
 
-.date {
-  opacity: .5;
-}
-
-.subject {
-
-}
-
 .name {
+  display: inline;
   font-weight: 600;
   font-size: var(--font-size-lg);
-  margin-bottom: 1.5rem;
+  padding: 0 var(--spacing-md) 0 0;
+  position: relative;
 }
 
 .header {
@@ -56,17 +57,20 @@
   position: relative;
 }
 
-.cardContent {
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-
-  button {
-    margin: 1rem 1rem 0 0;
-    & + button {
-      margin-right: 1rem;
-    }
+.statusChip {
+  &::first-letter {
+    text-transform: uppercase;
   }
+}
+
+.cardContent {
+  --min-column-size: 10rem;
+
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min-column-size), 1fr));
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
 }
 
 .card:hover {

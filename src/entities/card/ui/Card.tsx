@@ -26,16 +26,16 @@ export const Card = memo(
       >
         <header className={s.header}>
           <Chip
+            className={s.statusChip}
             status={status}
-            label={'Status'}
+            label={status}
           />
 
           <div className={s.cardMainInfo}>
-            <p className={s.name}>{title}</p>
+            <small className={s.date}>{formatToLocalDate(createdAt)}</small>
+            <h4 className={s.name}>{title}</h4>
             <p className={s.subject}>{body}</p>
           </div>
-
-          <small className={s.date}>{formatToLocalDate(createdAt)}</small>
         </header>
 
         <div className={s.cardContent}>

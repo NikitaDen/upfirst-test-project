@@ -9,9 +9,9 @@
   --primary-saturation: 90%;
   --primary-lightness: 50%;
 
-  --secondary-hue: 30; /* Complementary color: orange */
+  --secondary-hue: 275; /* Complementary color: violet */
   --secondary-saturation: 90%;
-  --secondary-lightness: 50%;
+  --secondary-lightness: 40%;
 
   /* Neutral Colors for Backgrounds and Text */
   --neutral-hue: 0; /* Neutral color (grayscale) */
@@ -45,10 +45,10 @@
   /* System Colors (Errors, Warnings, Successes) */
   --error-color: hsl(0, 70%, 60%);
   --error-color-hover: hsl(0, 70%, 70%);
-  --warning-color: hsl(40deg, 90%, 32%);
-  --warning-color-hover: hsl(40deg, 90%, 38%);
-  --success-color: hsl(120deg, 50%, 33%);
-  --success-color-hover: hsl(120deg, 50%, 37%);
+  --warning-color: hsl(40deg, 100%, 36%);
+  --warning-color-hover: hsl(40deg, 100%, 42%);
+  --success-color: hsl(120deg, 70%, 33%);
+  --success-color-hover: hsl(120deg, 70%, 37%);
 
   /* Spacing Variables (rem units for scaling) */
   --spacing-xxs: 0.25rem;  /* Extra extra small (4px) */
