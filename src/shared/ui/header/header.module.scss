@@ -3,6 +3,8 @@
   align-items: center;
   width: 100%;
   position: relative;
-  background: crimson;
-  padding: 1rem 1.25rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--background-alt-color);
+  box-shadow: 0 0 64px var(--background-color);
+  z-index: 1;
 }
