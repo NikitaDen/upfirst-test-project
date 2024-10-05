@@ -1,21 +1,30 @@
 .mainContent {
   display: flex;
   flex-direction: column;
-  background: #5a6268;
   flex: 1;
   height: 100%;
   position: relative;
-  padding: 1rem;
   overflow: hidden;
 }
 
+.disabled {
+  opacity: .5;
+}
+
 .postsList {
+  padding: 1rem;
   list-style-type: none;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
 
   overflow-y: auto;
   flex: 1;
+}
+
+.homeSpinner {
+  margin: auto;
 }
 
 .pagination {

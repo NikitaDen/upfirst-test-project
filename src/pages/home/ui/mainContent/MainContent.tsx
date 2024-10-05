@@ -3,6 +3,8 @@ import { Card } from '@/entities/card/ui'
 import { Post } from '@/entities/card/model'
 import { loadPosts } from '@/pages/home/api'
 import { Pagination } from '@/features/pagination/ui'
+import { Spinner } from '@/shared/ui'
+import classNames from 'classnames'
 import s from './mainContent.module.scss'
 
 const POSTS_PER_PAGE = 7
@@ -14,7 +16,7 @@ export const MainContent = memo(() => {
   const [requestState, setRequestState] = useState<'pending' | 'error' | 'idle'>('idle')
   const [totalPostsCount, setTotalPostsCount] = useState(0)
 
-  const isUiDisabled = requestState === 'pending'
+  const isPending = requestState === 'pending'
 
   useEffect(() => {
     // Flag that allows to ignore request's returned result in case same request is triggered again
@@ -68,20 +70,24 @@ export const MainContent = memo(() => {
 
   return (
     <main className={s.mainContent}>
-      <ul className={s.postsList}>
-        {posts.map((post) => (
-          <li key={post.id}>
-            <Card
-              key={post.id}
-              {...post}
-            />
-          </li>
-        ))}
+      <ul className={classNames(s.postsList, { [s.disabled]: isPending && posts.length })}>
+        {isPending && !posts.length ? (
+          <Spinner className={s.homeSpinner} />
+        ) : (
+          posts.map((post) => (
+            <li key={post.id}>
+              <Card
+                key={post.id}
+                {...post}
+              />
+            </li>
+          ))
+        )}
       </ul>
 
       {totalPostsCount > 0 && (
         <Pagination
-          disabled={isUiDisabled}
+          disabled={isPending}
           currentPageIndex={currentPageIndex}
           totalPages={Math.ceil(totalPostsCount / POSTS_PER_PAGE)}
           onPageIndexChange={handlePageChange}
