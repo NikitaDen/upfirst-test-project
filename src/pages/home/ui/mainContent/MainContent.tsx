@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react'
+import { memo, useCallback, useEffect, useState } from 'react'
 import { Card } from '@/entities/card/ui'
 import { Post } from '@/entities/card/model'
 import { loadPosts } from '@/pages/home/api'
@@ -91,19 +91,22 @@ export const MainContent = memo(() => {
     }
   }
 
-  const handleDeletePost = async (id: Post['id']) => {
-    try {
-      setRequestState('pending')
+  const handleDeletePost = useCallback(
+    async (id: Post['id']) => {
+      try {
+        setRequestState('pending')
 
-      await deletePost(id)
+        await deletePost(id)
 
-      setPosts(posts.filter((post) => post.id !== id))
-      setRequestState('idle')
-    } catch (e) {
-      setRequestState('error')
-      console.log('Could not remove post:', e)
-    }
-  }
+        setPosts(posts.filter((post) => post.id !== id))
+        setRequestState('idle')
+      } catch (e) {
+        setRequestState('error')
+        console.log('Could not remove post:', e)
+      }
+    },
+    [posts]
+  )
 
   return (
     <main className={s.mainContent}>
@@ -118,7 +121,7 @@ export const MainContent = memo(() => {
             >
               <Card
                 key={post.id}
-                onDelete={() => handleDeletePost(post.id)}
+                onDelete={handleDeletePost}
                 {...post}
               />
             </li>

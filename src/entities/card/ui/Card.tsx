@@ -17,11 +17,11 @@ const defaultTitle = 'Default Title'
 const defaultBody = 'Default Body'
 
 type CardProps = Post & {
-  onDelete?: () => unknown
+  onDelete?: (id: string) => unknown
 }
 
 export const Card = memo(
-  ({ onDelete, status, createdAt, title = defaultTitle, body = defaultBody }: CardProps) => {
+  ({ id, onDelete, status, createdAt, title = defaultTitle, body = defaultBody }: CardProps) => {
     const [isCollapsed, setIsCollapsed] = useState(true)
 
     return (
@@ -63,7 +63,7 @@ export const Card = memo(
               variant={'danger'}
               className={s.removeButton}
               key={button}
-              onClick={onDelete}
+              onClick={() => onDelete?.(id)}
             >
               Remove {button}
             </Button>
